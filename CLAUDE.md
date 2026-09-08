@@ -57,3 +57,36 @@ Create `examples/<topic>/` with `__init__.py`, a `main.py` exposing `run()`
 (and a `if __name__ == "__main__": run()` block), and a `README.md`. Reuse
 `core.providers.get_client()` / `get_model()` for provider access, then register
 it in the `EXAMPLES` list in `main.py`.
+
+## Working agreements
+
+### Development
+
+- Clean code first: clear names, small functions, no dead code.
+- Model each topic with classes and a thin abstraction over the provider —
+  hide the vendor detail, expose the concept being taught. Keep the
+  abstraction to one layer; no interface with a single implementation.
+- Fewest lines that stay readable. Delete before adding.
+- Respect the architecture: AI logic in `examples/<topic>/`, shared plumbing
+  in `core/`. Nothing topic-specific leaks into `core/`.
+- Install tooling through `uv` (`uv add --dev …`) so the lockfile stays the
+  source of truth. Prefer established, well-maintained tools over bespoke
+  scripts.
+- Record findings and design decisions in the README — the topic's own
+  `README.md` for topic-specific notes, the root one for cross-cutting ones.
+
+### PR flow
+
+- Never commit straight to `main`. Branch, do the task, open a PR.
+- PR description says what changed, why, and how it was verified.
+- Every task gets a ticket number (`AI-001`, `AI-002`, …) logged in the
+  "Task log" table in the root `README.md`. Reference it in the branch name,
+  commit subject, and PR title — never in source comments.
+
+### QA
+
+- Run it before pushing: `uv run pytest`, plus the example itself
+  (`uv run python -m examples.<topic>.main`) when the change touches one.
+- Cover edge cases, not just the happy path: empty and missing input,
+  malformed model output, absent API key, network failure.
+- Report actual results. If something is untested or broken, say so in the PR.

@@ -14,3 +14,10 @@ Option 3 — Quick one-shot examples
 
 uv run python -m examples.llm_basics.main # fixed "explain an LLM" prompt
 uv run python -m examples.streaming.main # fixed "poem" prompt, streamed
+
+## Task log
+
+| Ticket | Task | Status | Notes |
+| ------ | ---- | ------ | ----- |
+| AI-001 | Initial playground: core provider client + example topics | Done | |
+| AI-002 | Document development, PR, and QA working agreements | In review | Agreements in `CLAUDE.md`; this task log added |
