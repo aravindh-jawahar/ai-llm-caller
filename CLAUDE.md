@@ -49,7 +49,15 @@ uv run pytest                                  # run all tests
 uv run pytest tests/test_providers.py::test_model_override_wins_over_default  # single test
 uv add <package>                               # add a dependency
 uv add --dev <package>                         # add a dev-only dependency
+
+./scripts/trello.sh lanes                      # list the board's lanes
+./scripts/trello.sh ls                          # cards, grouped by lane
+./scripts/trello.sh new "AI-005: title" Backlog # create a ticket
+./scripts/trello.sh move AI-005 "In Progress"   # move it between lanes
 ```
+
+Trello credentials come from `.env` (`TRELLO_KEY`, `TRELLO_TOKEN`,
+`TRELLO_BOARD`) — see `.env.example`.
 
 ## Adding a new topic
 
@@ -79,23 +87,25 @@ it in the `EXAMPLES` list in `main.py`.
 
 - Never commit straight to `main`. Branch, do the task, open a PR.
 - PR description says what changed, why, and how it was verified.
-- Every task gets a ticket number (`AI-001`, `AI-002`, …) logged in the
-  "Task log" table in the root `README.md`. Reference it in the branch name,
-  commit subject, and PR title — never in source comments.
+- Every task gets a ticket on the Trello board — the single source of truth
+  for status. Reference the ticket number in the branch name, commit subject,
+  and PR title — never in source comments.
+- Every PR targets `main`. Never stack a PR on another unmerged branch: merging
+  it lands the work on that branch instead of `main`.
 
 ### Task completion checklist
 
 A task is done only when every box is ticked — pushing is not the finish line,
 the open PR is.
 
-1. Ticket number assigned and added to the Task log in the root `README.md`.
+1. Trello ticket created and moved to In Progress.
 2. Code written on a branch named after the ticket (`AI-003-short-description`).
 3. `uv run pytest` passes, and the example itself was run if one changed.
 4. Edge cases covered by a test, not just the happy path.
 5. Decisions and findings written into the relevant `README.md`.
 6. Branch pushed **and** a pull request opened — never stop at the push.
 7. PR title carries the ticket; the body says what, why, and how it was verified.
-8. Task log row updated to reflect the real status.
+8. Trello ticket moved to the lane that matches reality.
 
 ### QA
 
