@@ -20,5 +20,6 @@ uv run python -m examples.streaming.main # fixed "poem" prompt, streamed
 | Ticket | Task | Status | Notes |
 | ------ | ---- | ------ | ----- |
 | AI-001 | Initial playground: core provider client + example topics | Done | |
-| AI-002 | Document development, PR, and QA working agreements | In review | Agreements in `CLAUDE.md`; this task log added |
+| AI-002 | Document development, PR, and QA working agreements | Done | Agreements in `CLAUDE.md`; this task log added |
+| AI-003 | AI structured data extractor (`project_phase_1/`) | Done | Person details from free text; logic to be tuned further |
 | AI-004 | CI: run the test suite on every PR and on merges to `main` | In review | `.github/workflows/tests.yml`; make it a required check once merged |
