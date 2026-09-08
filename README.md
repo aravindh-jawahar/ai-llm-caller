@@ -21,4 +21,3 @@ uv run python -m examples.streaming.main # fixed "poem" prompt, streamed
 | ------ | ---- | ------ | ----- |
 | AI-001 | Initial playground: core provider client + example topics | Done | |
 | AI-002 | Document development, PR, and QA working agreements | In review | Agreements in `CLAUDE.md`; this task log added |
-| AI-003 | AI structured data extractor (`project_phase_1/`) | In review | Person details from free text; logic to be tuned further |
