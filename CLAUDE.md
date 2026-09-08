@@ -83,6 +83,20 @@ it in the `EXAMPLES` list in `main.py`.
   "Task log" table in the root `README.md`. Reference it in the branch name,
   commit subject, and PR title — never in source comments.
 
+### Task completion checklist
+
+A task is done only when every box is ticked — pushing is not the finish line,
+the open PR is.
+
+1. Ticket number assigned and added to the Task log in the root `README.md`.
+2. Code written on a branch named after the ticket (`AI-003-short-description`).
+3. `uv run pytest` passes, and the example itself was run if one changed.
+4. Edge cases covered by a test, not just the happy path.
+5. Decisions and findings written into the relevant `README.md`.
+6. Branch pushed **and** a pull request opened — never stop at the push.
+7. PR title carries the ticket; the body says what, why, and how it was verified.
+8. Task log row updated to reflect the real status.
+
 ### QA
 
 - Run it before pushing: `uv run pytest`, plus the example itself
